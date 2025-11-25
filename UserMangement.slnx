@@ -2,7 +2,15 @@
   <Folder Name="/1.Domain/">
     <Project Path="App.Core/App.Core.csproj" />
   </Folder>
-  <Folder Name="/2.Application/" />
-  <Folder Name="/3.Infrastructure/" />
-  <Folder Name="/4.Presentation/" />
+  <Folder Name="/2.Application/">
+    <Project Path="App.AppServices/App.AppServices.csproj" Id="cda7b08e-7714-42eb-b3ea-fe37952752b8" />
+    <Project Path="App.Services/App.Services.csproj" Id="9119841d-1c1f-4ce7-8189-8ea18dc77092" />
+  </Folder>
+  <Folder Name="/3.Infrastructure/">
+    <Project Path="App.Infra.EFCore/App.Infra.EFCore.csproj" Id="b747706a-6fb2-4037-a4a4-65eabb4a5f42" />
+    <Project Path="App.Infra.Security/App.Infra.Security.csproj" Id="917a5bf6-89e7-4219-b1cb-77cb61a07662" />
+  </Folder>
+  <Folder Name="/4.Presentation/">
+    <Project Path="App.MVC/App.MVC.csproj" Id="f49083ce-863c-45b1-803c-7e42d6b5c56d" />
+  </Folder>
 </Solution>
