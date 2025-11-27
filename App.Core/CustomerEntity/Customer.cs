@@ -6,10 +6,11 @@ public class Customer
     {
         FullName = fullName;
         Email = email;
+        CreatedAt = DateTime.UtcNow;
     }
 
     public int Id { get; init; }
     public string FullName { get; set; }
     public string Email { get; private set; }
-    public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; init; }
 }

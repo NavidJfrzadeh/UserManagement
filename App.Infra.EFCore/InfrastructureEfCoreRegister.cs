@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using App.Infra.EFCore.Repositories;
+using App.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,9 +10,9 @@ public static class InfrastructureEfCoreRegister
 {
     public static IServiceCollection AddInfraEfCore(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=UserManagementDB ;Integrated Security=True;TrustServerCertificate=True;"));
-
+        //services.AddDbContext<AppDbContext>(options =>
+        //    options.UseSqlServer(configuration.GetConnectionString("ConnectionString"))); // not working
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
         return services;
     }
 }

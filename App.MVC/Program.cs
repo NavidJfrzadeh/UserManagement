@@ -1,11 +1,17 @@
 using App.Infra.EFCore;
+using App.Services;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 #region Services
+builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=UserManagementDB ; Integrated Security=True; TrustServerCertificate=True;"));
+
 builder.Services.AddInfraEfCore(builder.Configuration);
+builder.Services.AddAppServiceRegistration();
 #endregion
 
 var app = builder.Build();

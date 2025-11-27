@@ -3,7 +3,6 @@
     <Project Path="App.Core/App.Core.csproj" />
   </Folder>
   <Folder Name="/2.Application/">
-    <Project Path="App.AppServices/App.AppServices.csproj" Id="cda7b08e-7714-42eb-b3ea-fe37952752b8" />
     <Project Path="App.Services/App.Services.csproj" Id="9119841d-1c1f-4ce7-8189-8ea18dc77092" />
   </Folder>
   <Folder Name="/3.Infrastructure/">
