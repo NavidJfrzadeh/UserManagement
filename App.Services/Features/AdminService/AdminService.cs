@@ -1,9 +1,9 @@
 ﻿using App.Services.Contracts;
 using App.Services.Features.AdminService.Queries.GetById;
 
-namespace App.Infra.EFCore.Repositories;
+namespace App.Services.Features.AdminService;
 
-public class AdminRepository : IAdminRepository
+public class AdminService : IAdminService
 {
     public Task<AdminQuery> GetById(int id, CancellationToken cancellationToken)
     {

@@ -13,6 +13,7 @@ public static class InfrastructureEfCoreRegister
         //services.AddDbContext<AppDbContext>(options =>
         //    options.UseSqlServer(configuration.GetConnectionString("ConnectionString"))); // not working
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IAdminRepository, AdminRepository>();
         return services;
     }
 }

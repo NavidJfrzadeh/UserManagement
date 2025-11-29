@@ -1,6 +1,8 @@
 ﻿using App.Core.CustomerEntity;
 using App.Services.Contracts;
-using App.Services.Contracts.DTOs;
+using App.Services.Features.CustomerService.Commands.Update;
+using App.Services.Features.CustomerService.Queries.GetAll;
+using App.Services.Features.CustomerService.Queries.GetById;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Infra.EFCore.Repositories;
@@ -19,23 +21,21 @@ public class CustomerRepository(AppDbContext _context) : ICustomerRepository
         throw new NotImplementedException();
     }
 
-    public async Task<List<CustomerDto>> GetAll(CancellationToken cancellationToken)
+    public async Task<List<CustomerListQuery>> GetAllInPage(int pageNumber, int pageSize, CancellationToken cancellationToken)
     {
-        return await _context.Customers.Select(c => new CustomerDto
-        {
-            Id = c.Id,
-            Email = c.Email,
-            FirstName = c.FullName
-        }).ToListAsync(cancellationToken);
+        return await _context.Customers.Select(c => new CustomerListQuery(c.Id, c.FullName, c.Email))
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
     }
 
-    public Task<CustomerDto> GetById(int id, CancellationToken cancellationToken)
+    public Task<CustomerQuery> GetById(int id, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
 
 
-    public Task Update(CustomerCreateDto customer)
+    public Task Update(CustomerUpdateCommand customer)
     {
         throw new NotImplementedException();
     }

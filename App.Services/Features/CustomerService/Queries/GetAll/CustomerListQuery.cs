@@ -1,9 +1,5 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace App.Services.Features.CustomerService.Queries.GetAll
-{
-    public record CustomerListQuery : IRequest<List<CustomerListQuery>>;
-}
+namespace App.Services.Features.CustomerService.Queries.GetAll;
+
+public record CustomerListQuery(int id = 0, string fullName = "", string email = "", int pageNumber = 1) : IRequest<List<CustomerListQuery>>;

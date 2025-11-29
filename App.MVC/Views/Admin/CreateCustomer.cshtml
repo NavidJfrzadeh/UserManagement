@@ -1,0 +1,42 @@
+﻿@model CustomerCreateViewModel
+
+@{
+    ViewData["Title"] = "Create Customer-AdminPage";
+}
+
+<div class="container mt-5">
+    @{
+        if (TempData["CreateSuccess"] != null)
+        {
+            <div class="col-3 alert alert-success text-center">
+                <sapn>@TempData["CreateSuccess"]</sapn>
+            </div>
+        }
+    }
+    <h2>Create New Customer</h2>
+
+    <form asp-action="CreateCustomer" method="post" class="mt-4">
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="FullName" class="form-label"></label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-outline-secondary ms-2">Back to List</a>
+    </form>
+</div>
+
+@* @section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+} *@

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.0" />
     <PackageReference Include="MediatR" Version="13.1.0" />
   </ItemGroup>
 
@@ -15,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\AdminService\" />
+    <Folder Include="Features\AdminService\Commands\" />
+    <Folder Include="Features\AdminService\0.MediatorValidators\" />
   </ItemGroup>
 
 </Project>

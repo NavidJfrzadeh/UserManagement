@@ -1,4 +1,4 @@
-using App.MVC.Models;
+﻿using App.MVC.Models;
 using App.Services.Features.CustomerService.Commands.Create;
 using App.Services.Features.CustomerService.Queries.GetAll;
 using MediatR;
@@ -30,7 +30,7 @@ namespace App.MVC.Controllers
 
         public async Task<IActionResult> GetAllCustomers(CancellationToken cancellationToken)
         {
-           var customers = await _mediator.Send(new CustomerListQuery(), cancellationToken);
+            var customers = await _mediator.Send(new CustomerListQuery(0, "", ""), cancellationToken);
             return Ok(customers);
         }
 
@@ -43,6 +43,13 @@ namespace App.MVC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult PageNotFound()
+        {
+            Response.StatusCode = 404;
+            ViewData["Title"] = "صفحه پیدا نشد";
+            return View();
         }
     }
 }

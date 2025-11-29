@@ -1,3 +1,4 @@
+using App.Core;
 using App.Infra.EFCore;
 using App.Services;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 #region Services
+var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .Build();
+
+var siteSettings = configuration.GetSection("SiteSettings").Get<SiteSettings>();
+builder.Services.AddSingleton<SiteSettings>();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=UserManagementDB ; Integrated Security=True; TrustServerCertificate=True;"));
 
@@ -20,12 +28,12 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseStatusCodePagesWithRedirects("/Home/PageNotFound");
 
 app.UseAuthorization();
 

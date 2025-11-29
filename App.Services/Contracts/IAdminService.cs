@@ -2,7 +2,7 @@
 
 namespace App.Services.Contracts;
 
-public interface IAdminRepository
+public interface IAdminService
 {
     Task<AdminQuery> GetById(int id, CancellationToken cancellationToken);
 }
